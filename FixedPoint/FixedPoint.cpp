@@ -60,6 +60,7 @@ public:
    */
   template <class TIn, TIn FracBitsIn>
   Fixp operator+(Fixp<TIn, FracBitsIn> In) {
+    return Fixp<T, std::max(FracBitsIn, FracBits)>((T)Value + In.Value);
   }
 
   /**
@@ -74,6 +75,7 @@ public:
    */
   template <class TIn, TIn FracBitsIn>
   Fixp operator-(Fixp<TIn, FracBitsIn> In) {
+    return Fixp<T, std::max(FracBitsIn, FracBits)>((T)Value - In.Value);
   }
 
   /**
@@ -87,6 +89,7 @@ public:
    */
   template <class TIn, TIn FracBitsIn>
   Fixp<T, FracBits + FracBitsIn> operator*(Fixp<TIn, FracBitsIn> In) {
+    return Fixp<T, (T)(FracBits + FracBitsIn)>((T)Value * In.Value);
   }
 
   /**
